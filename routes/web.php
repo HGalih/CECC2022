@@ -15,14 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('LandingPageView');
-});
+})->name('home');
+
+Route::get('/soon', function () {
+    return view('comingsoon');
+})->name('soon');
+
 
 Route::get('/home', function () {
     return view('LandingPageView');
 });
-Route::get('/masuk', function () {
-    return view('login');
-});
+
+Route::get('/guidance', function () {
+    return view('LandingPageView');
+})->name('guidance');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

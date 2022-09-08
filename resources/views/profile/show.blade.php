@@ -1,45 +1,33 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+<x-guest-layout>
 
-    <div>
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="-mt-20 bg-l-blue p-20 pt-20 text-center">
+        <img class="mx-auto transition-all duration-150 ease-out " style="width: 20vw" src="{{asset('img/LogoPack.svg')}}">
+
+        <div class="bg-d-blue inline-block mx-auto rounded-lg mt-20 relative overflow-y-hidden">
+          
+        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 text-left" style="background-image: url('{{asset('img/fishclutter.svg')}}')">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+            <div class=" z-10">
                 @livewire('profile.update-profile-information-form')
-
-                <x-jet-section-border />
+            </div>
             @endif
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-                <div class="mt-10 sm:mt-0">
+                <div class="mt-10">
                     @livewire('profile.update-password-form')
                 </div>
 
-                <x-jet-section-border />
             @endif
 
-            @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.two-factor-authentication-form')
-                </div>
 
-                <x-jet-section-border />
-            @endif
 
-            <div class="mt-10 sm:mt-0">
+            <div class="mt-10">
                 @livewire('profile.logout-other-browser-sessions-form')
             </div>
 
-            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-                <x-jet-section-border />
-
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.delete-user-form')
-                </div>
-            @endif
+          
+        </div>
+        
         </div>
     </div>
 </x-app-layout>
